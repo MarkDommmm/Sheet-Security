@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css}" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    .center{
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<a href="/employee/get-all">List Employee</a>
+<a href="/department/add-department">Add Department</a>
+<table class="table table-striped center">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="v,loop:${department}">
+            <td th:text="${loop.count}"></td>
+            <td th:text="${v.name}"></td>
+            <td th:text="${v.description}"></td>
+            <td>
+                <a th:href="@{|/department/update-department/${v.id}|}">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+                <a onclick="return confirm('do you want to delete this item ?')"
+                   th:href="@{|/department/delete-department/${v.id}|}">
+                    <i class="fa-solid fa-trash-can"></i>
+                </a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+</body>
+</html>

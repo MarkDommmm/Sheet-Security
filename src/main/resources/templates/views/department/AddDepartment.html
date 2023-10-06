@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+    .center{
+        text-align: center;
+    }
+    form.row.g-3 {
+        width: 50rem;
+        margin: 0 auto;
+    }
+</style>
+</head>
+<body>
+<h1 class="center">Add Department</h1>
+<form class="row g-3" method="post" th:action="@{/department/add-department}" th:object="${department}">
+
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Name</label>
+        <input type="text" class="form-control" id="inputPassword4" th:field="*{name}">
+    </div>
+    <div class="col-6">
+        <label for="inputName" class="form-label">Description</label>
+        <input type="text" class="form-control" id="inputName" th:field="*{description}" >
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </div>
+</form>
+</body>
+</html>

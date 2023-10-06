@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Spring Boot Security</title>
+</head>
+<body>
+<h2>Sign Up</h2>
+
+<form name='login-form' th:action="@{/public/sign-up}" th:object="${signup}" method='POST'>
+    <table>
+        <tr>
+            <td>Email:</td>
+            <td><label>
+                <input type='text' name='email' value='' th:field="*{username}">
+            </label></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><label>
+                <input type='password' name='password' th:field="*{password}"/>
+            </label></td>
+        </tr>
+        <tr>
+            <td><input name="submit" type="submit" value="submit" /></td>
+        </tr>
+    </table>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
+</body>
+</html>
